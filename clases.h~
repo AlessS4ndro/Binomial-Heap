@@ -1,0 +1,80 @@
+
+
+template<class T>
+struct BNode
+{
+  T data;
+  int grado;
+  BNode<T> *father;
+  List<T> hijos;
+  
+  BNode(T data,int grado) {this->data=data;this->grado=grado;father=NULL; }
+  BNode(T data){this->data=data;grado=0;father=NULL;}
+  
+}
+
+template<class T>
+class BinomialHeap
+{
+  List< BNodes<T>* > roots;
+  
+ public:
+  BinomialHeap(){}
+  void add(T );
+  void merge();
+  void decrease_key(BNode<T> *);
+  void swap(BNode<T> *,BNode<T> *);
+  //void delete(BNode<T> *);
+  //void delete_min();
+  BNode<T> * find_min();
+  void print();
+}
+
+template<class T>
+void BinomialHeap<T>::add(T d)
+{
+  BNode<T> *nuevo=new BNode<T>(d);
+  roots.push_front(nuevo);
+  merge();
+}
+template<class T>
+void BinomialHeap<T>::merge()
+{
+
+}
+template<class T>
+void BinomialHeap<T>::decrease_key(BNode<T>* p)
+{
+  if(!p) return;
+  if(!p->father)return ;
+  if(p->father->data < p->data)return;
+  swap(p,p->father);
+  decrease_key(p->padre);
+}
+
+template<class T>
+void BinomialHeap<T>::swap(BNode<T>* p,BNode<T> *q)
+{
+  T temp=p->data;
+  p->data=q->data;
+  q->data=temp;
+
+}
+/*
+template<class T>
+void BinomialHeap<T>::delete(BNode<T> *p)
+{
+  p->data=pmin->data-1;
+  decrease_key(p)
+}
+
+void delete_min();
+*/
+
+template<class T>
+void BinomialHeap<T>::print()
+{
+  
+  for (list::iterator it=roots.begin();it!=roots.begin();it++)
+    cout<<"->"<<**it<<"->"<<endl;
+}
