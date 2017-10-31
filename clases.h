@@ -1,4 +1,5 @@
 #include<iostream>
+#include<list>
 
 using namespace std;
 
@@ -7,12 +8,8 @@ struct BNode
 {
   T data;
   int grado;
-  BNode<T> *father;
-  BNode<T> *brother;
-  BNode<T> *hermano;
- 
-  BNode(T d):data(d),father(NULL),brother(NULL),hermano(NULL);
-  
+  list<BNode<T>*> childs;
+  BNode(T d):data(d),grado(0){}
 };
 
 template<class T>
@@ -29,12 +26,34 @@ class BinomialHeap
   //void delete(BNode<T> *);
   //void delete_min();
   BNode<T> * find_min();
-  void print();
+  void unir(list<BNode<T>*>,list<BNode<T>*>);
+  //void print();
 };
 
-void add(T dato)
+template<class T>
+void BinomialHeap<T>::add(T dato)
 {
-  BNode<T> *nuevo=new BNode<T>(data);
-  B
+  roots.push_front(new BNode<T>(dato));
+  merge();
+}
+
+template<class T>
+void BinomialHeap<T>::merge()
+{
+  list< BNode<T>* >::iterator primero;
+  primero;//=roots.begin();
+  list< BNode<T>* >::iterator segundo;//=++primero;
+
+  //if(segundo!=roots.end() && *(*primero)->grado==*(*(segundo))->grado){
+  // unir(primero,segundo);
+  //}
+}
+
+template<class T>
+void BinomialHeap<T>::unir(list<BNode<T>*> p,list<BNode<T>*> q)
+{
+
+
+
 }
 

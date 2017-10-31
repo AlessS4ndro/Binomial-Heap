@@ -12,7 +12,7 @@ int main()
   do{
     cin>>n;
     heap.add(n);
-    heap.print();
+    //heap.print();
   }while(n!=0);
   
 
