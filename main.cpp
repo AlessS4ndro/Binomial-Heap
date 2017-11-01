@@ -6,15 +6,24 @@ using namespace std;
 
 int main()
 {
-  BinomialHeap<int> heap;
-
+  BinomialHeap<> heap;
+  typename list<BNode<>*>::iterator menor;
   int n;
   do{
     cin>>n;
+    if(n==666){
+      //cout<<"q nodo eliminara: ";cin>>n;
+      heap.delete_min();
+      heap.print();
+      continue;
+    }
     heap.add(n);
-    //heap.print();
-  }while(n!=0);
-  
+    heap.print();
+    menor=heap.find_min();
+
+    cout<<"\n\n";
+  }while(n!=999);
+
 
 
 
